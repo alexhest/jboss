@@ -80,3 +80,6 @@ group jboss_user
 mode '0644'
 action :create
 end
+
+include_recipe "jboss::init"
+include_recipe "jboss::deploy"
