@@ -30,3 +30,12 @@ execute 'extract_jboss' do
     group 'jboss'
 end
 
+#Installing init script
+template '/etc/init.d/jboss' do
+source 'init.erb'
+owner 'root'
+group 'root'
+mode '0755'
+action :create
+end
+
