@@ -6,23 +6,37 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-#include_recipe "java_se"
+include_recipe "java_se"
+
+jboss_url = node["jboss"]["url"]
+jboss_path = node["jboss"]["path"]
+jboss_tmp = node["jboss"]["tmp"]
+jboss_user = node["jboss"]["user"]
+jboss_testapp = node["jboss"]["testapp_url"]
+
 
 #Creating JBoss user
-user 'jboss' do
+user jboss_user do
   comment 'A JBoss user'
 end
 
-#Creating main directory
-directory node['jboss']['path'] do
+#Cleaning temp directory
+directory jboss_tmp do
+ignore_failure true
+recursive true
+action :delete
+end
+
+#Creating JBoss directory
+directory jboss_path do
 owner 'jboss'
 group 'jboss'
 mode '0755'
 action :create
 end
 
-#Creating temp directory
-directory "#{node['jboss']['path']}/temp" do
+#Creating TEMP directory
+directory jboss_tmp do
 owner 'jboss'
 group 'jboss'
 mode '0755'
@@ -30,37 +44,39 @@ action :create
 end
 
 #Downloading JBoss installation
-remote_file "#{node['jboss']['path']}/temp/jboss.tar.gz" do
+remote_file "#{jboss_tmp}/jboss.tar.gz" do
     force_unlink true
-    source node['jboss']['url']
+    source jboss_url
     owner 'jboss'
     group 'jboss'
     mode '0755'
     action :create
 end
 
-release_name = node['jboss']['url'].
+#Getting name of release
+release_name = jboss_url.
     split('/')[-1].
     sub!('.tar.gz', '')
 
 #Extracting JBoss from archive
 execute 'extract_jboss' do
     command "tar xzvf jboss.tar.gz"
-    cwd "#{node['jboss']['path']}/temp"
+    cwd jboss_tmp
+    user 'jboss'
+    group 'jboss'
 end
 
 #Move JBoss files one directory up
 execute 'move_jboss' do
-    command "shopt -s nocaseglob && mv #{node['jboss']['path']}/temp/#{release_name}/* #{node['jboss']['path']}/"
-    cwd node['jboss']['path']
+    command "shopt -s nocaseglob && mv #{jboss_tmp}/#{release_name}/* #{jboss_path}/"
+    cwd jboss_path
 end
-    
-#Downloading TestWeb app
-remote_file "#{node['jboss']['path']}/temp/test.zip" do
-    force_unlink true
-    source node['jboss']['testapp_url']
-    owner 'jboss'
-    group 'jboss'
-    mode '0755'
-    action :create
+
+#Copying JBoss config from files resources
+cookbook_file "#{jboss_path}/standalone/configuration/standalone.xml" do
+source 'standalone.xml'
+owner 'jboss'
+group 'jboss'
+mode '0644'
+action :create
 end
