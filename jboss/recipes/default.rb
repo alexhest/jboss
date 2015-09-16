@@ -29,16 +29,16 @@ end
 
 #Creating JBoss directory
 directory jboss_path do
-owner 'jboss'
-group 'jboss'
+owner jboss_user
+group jboss_user
 mode '0755'
 action :create
 end
 
 #Creating TEMP directory
 directory jboss_tmp do
-owner 'jboss'
-group 'jboss'
+owner jboss_user
+group jboss_user
 mode '0755'
 action :create
 end
@@ -47,8 +47,8 @@ end
 remote_file "#{jboss_tmp}/jboss.tar.gz" do
     force_unlink true
     source jboss_url
-    owner 'jboss'
-    group 'jboss'
+    owner jboss_user
+    group jboss_user
     mode '0755'
     action :create
 end
@@ -62,8 +62,8 @@ release_name = jboss_url.
 execute 'extract_jboss' do
     command "tar xzvf jboss.tar.gz"
     cwd jboss_tmp
-    user 'jboss'
-    group 'jboss'
+    user jboss_user
+    group jboss_user
 end
 
 #Move JBoss files one directory up
@@ -75,8 +75,8 @@ end
 #Copying JBoss config from files resources
 cookbook_file "#{jboss_path}/standalone/configuration/standalone.xml" do
 source 'standalone.xml'
-owner 'jboss'
-group 'jboss'
+owner jboss_user
+group jboss_user
 mode '0644'
 action :create
 end

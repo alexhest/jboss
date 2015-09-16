@@ -17,9 +17,9 @@ jboss_testapp = node["jboss"]["testapp_url"]
 
 remote_file "#{jboss_tmp}/test.zip" do
     force_unlink true
-    source "#{jboss_testapp}"
-    owner "#{jboss_user}"
-    group "#{jboss_user}"
+    source jboss_testapp
+    owner jboss_user
+    group jboss_user
     mode '0755'
     action :create
 end
@@ -28,8 +28,8 @@ end
 execute 'extract_jboss' do
     command "unzip -d #{jboss_path}/standalone/deployments -j test.zip "
     cwd jboss_tmp
-    user "#{jboss_user}"
-    group "#{jboss_user}"
+    user jboss_user
+    group jboss_user
 end
 
 #Restarting JBoss

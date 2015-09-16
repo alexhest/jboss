@@ -6,12 +6,13 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+jboss_user = node["jboss"]["user"]
 
 #Installing init script
 template '/etc/init.d/jboss' do
 source 'init.erb'
-owner 'jboss'
-group 'jboss'
+owner jboss_user
+group jboss_user
 mode '0754'
 action :create
 end
