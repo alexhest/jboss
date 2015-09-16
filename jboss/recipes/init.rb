@@ -10,15 +10,15 @@
 #Installing init script
 template '/etc/init.d/jboss' do
 source 'init.erb'
-owner 'root'
-group 'root'
-mode '0755'
+owner 'jboss'
+group 'jboss'
+mode '0754'
 action :create
 end
 
-#Stating JBoss server
+#Starting JBoss server
 execute 'start_jboss' do
-command "/usr/bin/sh /etc/init.d/jboss start"
-user 'jboss'
-group 'jboss'
+command "/etc/init.d/jboss start"
+user 'root'
+group 'root'
 end

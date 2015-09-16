@@ -10,14 +10,16 @@
 
 #Downloading TestWeb app
 
-jboss_path = node['jboss']['path']
-jboss_tmp = node['jboss']['tmp']
+jboss_path = node["jboss"]["path"]
+jboss_tmp = node["jboss"]["tmp"]
+jboss_user = node["jboss"]["user"]
+jboss_testapp = node["jboss"]["testapp_url"]
 
 remote_file "#{jboss_tmp}/test.zip" do
     force_unlink true
-    source node['jboss']['testapp_url']
-    owner 'jboss'
-    group 'jboss'
+    source "#{jboss_testapp}"
+    owner "#{jboss_user}"
+    group "#{jboss_user}"
     mode '0755'
     action :create
 end
@@ -26,16 +28,13 @@ end
 execute 'extract_jboss' do
     command "unzip -d #{jboss_path}/standalone/deployments -j test.zip "
     cwd jboss_tmp
-    user 'jboss'
-    group 'jboss'
+    user "#{jboss_user}"
+    group "#{jboss_user}"
 end
 
-#Installing init script
-template '/etc/init.d/jboss' do
-source 'init.erb'
-owner 'root'
+#Restarting JBoss
+execute 'restart_jboss' do
+command "/etc/init.d/jboss restart"
+user 'root'
 group 'root'
-mode '0755'
-action :create
 end
-
