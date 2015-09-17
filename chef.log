@@ -1,0 +1,133 @@
+[2015-09-17T04:01:15-04:00] INFO: Forking chef instance to converge...
+[2015-09-17T04:01:15-04:00] INFO: *** Chef 11.16.4 ***
+[2015-09-17T04:01:15-04:00] INFO: Chef-client pid: 3003
+[2015-09-17T04:01:26-04:00] INFO: Setting the run_list to ["recipe[jboss]"] from CLI options
+[2015-09-17T04:01:26-04:00] INFO: Run List is [recipe[jboss]]
+[2015-09-17T04:01:26-04:00] INFO: Run List expands to [jboss]
+[2015-09-17T04:01:26-04:00] INFO: Starting Chef Run for vagrant-centos7
+[2015-09-17T04:01:26-04:00] INFO: Running start handlers
+[2015-09-17T04:01:26-04:00] INFO: Start handlers complete.
+[2015-09-17T04:01:26-04:00] INFO: Processing chef_gem[open_uri_redirections] action install (java_se::_download_java line 50)
+[2015-09-17T04:01:36-04:00] INFO: Download http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.tar.gz
+[2015-09-17T04:01:36-04:00] WARN: Cloning resource attributes for directory[/opt/jboss/tmp] from prior resource (CHEF-3694)
+[2015-09-17T04:01:36-04:00] WARN: Previous directory[/opt/jboss/tmp]: /var/chef/cookbooks/jboss/recipes/default.rb:24:in `from_file'
+[2015-09-17T04:01:36-04:00] WARN: Current  directory[/opt/jboss/tmp]: /var/chef/cookbooks/jboss/recipes/default.rb:39:in `from_file'
+[2015-09-17T04:01:36-04:00] WARN: Cloning resource attributes for execute[extract_jboss] from prior resource (CHEF-3694)
+[2015-09-17T04:01:36-04:00] WARN: Previous execute[extract_jboss]: /var/chef/cookbooks/jboss/recipes/default.rb:62:in `from_file'
+[2015-09-17T04:01:36-04:00] WARN: Current  execute[extract_jboss]: /var/chef/cookbooks/jboss/recipes/deploy.rb:28:in `from_file'
+[2015-09-17T04:01:36-04:00] INFO: Processing chef_gem[open_uri_redirections] action install (java_se::_download_java line 50)
+[2015-09-17T04:01:36-04:00] INFO: Processing ruby_block[fetch http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.tar.gz] action run (java_se::_download_java line 55)
+[2015-09-17T04:03:18-04:00] INFO: ruby_block[fetch http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.tar.gz] called
+[2015-09-17T04:03:18-04:00] INFO: Processing ruby_block[validate /var/chef/cache/jdk-8u60-linux-x64.tar.gz] action run (java_se::_download_java line 63)
+[2015-09-17T04:03:41-04:00] INFO: ruby_block[validate /var/chef/cache/jdk-8u60-linux-x64.tar.gz] called
+[2015-09-17T04:03:41-04:00] INFO: Processing ruby_block[set-env-java-home] action run (java_se::_linux_install line 12)
+[2015-09-17T04:03:41-04:00] INFO: ruby_block[set-env-java-home] called
+[2015-09-17T04:03:41-04:00] INFO: Processing directory[/etc/profile.d] action create (java_se::_linux_install line 19)
+[2015-09-17T04:03:42-04:00] INFO: Processing file[/etc/profile.d/jdk.sh] action create (java_se::_linux_install line 23)
+[2015-09-17T04:03:42-04:00] INFO: file[/etc/profile.d/jdk.sh] created file /etc/profile.d/jdk.sh
+[2015-09-17T04:03:42-04:00] INFO: file[/etc/profile.d/jdk.sh] updated file contents /etc/profile.d/jdk.sh
+[2015-09-17T04:03:42-04:00] INFO: file[/etc/profile.d/jdk.sh] mode changed to 755
+[2015-09-17T04:03:44-04:00] INFO: Processing ruby_block[set JAVA_HOME in /etc/environment] action run (java_se::_linux_install line 28)
+[2015-09-17T04:03:44-04:00] INFO: Processing yum_package[glibc] action install (java_se::_linux_install line 38)
+[2015-09-17T04:03:44-04:00] INFO: Processing package[tar] action install (java_se::_linux_install line 43)
+[2015-09-17T04:04:30-04:00] INFO: Processing ruby_block[adding java to /usr/lib/jvm/jdk1.8.0_60] action run (java_se::_linux_install line 55)
+[2015-09-17T04:05:08-04:00] INFO: ruby_block[adding java to /usr/lib/jvm/jdk1.8.0_60] called
+[2015-09-17T04:05:08-04:00] INFO: Processing template[adding /usr/lib/jvm/.java.jinfo for debian] action create (java_se::_linux_install line 84)
+[2015-09-17T04:05:08-04:00] INFO: Processing ruby_block[symlink /usr/lib/jvm/jdk1.8.0_60 to /usr/lib/jvm/java] action run (java_se::_linux_install line 103)
+[2015-09-17T04:05:08-04:00] INFO: ruby_block[symlink /usr/lib/jvm/jdk1.8.0_60 to /usr/lib/jvm/java] called
+[2015-09-17T04:05:08-04:00] INFO: Processing ruby_block[update-alternatives] action run (java_se::_linux_install line 113)
+[2015-09-17T04:05:08-04:00] INFO: adding alternative for appletviewer
+[2015-09-17T04:05:08-04:00] INFO: skipping setting alternative for apt. Command /usr/lib/jvm/java/bin/apt does not exist.
+[2015-09-17T04:05:08-04:00] INFO: adding alternative for ControlPanel
+[2015-09-17T04:05:08-04:00] INFO: adding alternative for extcheck
+[2015-09-17T04:05:08-04:00] INFO: adding alternative for idlj
+[2015-09-17T04:05:08-04:00] INFO: adding alternative for jar
+[2015-09-17T04:05:08-04:00] INFO: adding alternative for jarsigner
+[2015-09-17T04:05:08-04:00] INFO: adding alternative for java
+[2015-09-17T04:05:09-04:00] INFO: adding alternative for javac
+[2015-09-17T04:05:09-04:00] INFO: adding alternative for javadoc
+[2015-09-17T04:05:09-04:00] INFO: adding alternative for javafxpackager
+[2015-09-17T04:05:09-04:00] INFO: adding alternative for javah
+[2015-09-17T04:05:09-04:00] INFO: adding alternative for javap
+[2015-09-17T04:05:09-04:00] INFO: adding alternative for javaws
+[2015-09-17T04:05:09-04:00] INFO: adding alternative for jcmd
+[2015-09-17T04:05:09-04:00] INFO: adding alternative for jconsole
+[2015-09-17T04:05:09-04:00] INFO: adding alternative for jcontrol
+[2015-09-17T04:05:09-04:00] INFO: adding alternative for jdb
+[2015-09-17T04:05:09-04:00] INFO: adding alternative for jdeps
+[2015-09-17T04:05:09-04:00] INFO: adding alternative for jhat
+[2015-09-17T04:05:10-04:00] INFO: adding alternative for jinfo
+[2015-09-17T04:05:10-04:00] INFO: adding alternative for jjs
+[2015-09-17T04:05:10-04:00] INFO: adding alternative for jmap
+[2015-09-17T04:05:10-04:00] INFO: adding alternative for jmc
+[2015-09-17T04:05:10-04:00] INFO: adding alternative for jps
+[2015-09-17T04:05:10-04:00] INFO: adding alternative for jrunscript
+[2015-09-17T04:05:10-04:00] INFO: adding alternative for jsadebugd
+[2015-09-17T04:05:10-04:00] INFO: adding alternative for jstack
+[2015-09-17T04:05:10-04:00] INFO: adding alternative for jstat
+[2015-09-17T04:05:10-04:00] INFO: adding alternative for jstatd
+[2015-09-17T04:05:10-04:00] INFO: adding alternative for jvisualvm
+[2015-09-17T04:05:10-04:00] INFO: adding alternative for keytool
+[2015-09-17T04:05:10-04:00] INFO: adding alternative for native2ascii
+[2015-09-17T04:05:11-04:00] INFO: adding alternative for orbd
+[2015-09-17T04:05:11-04:00] INFO: adding alternative for pack200
+[2015-09-17T04:05:11-04:00] INFO: adding alternative for policytool
+[2015-09-17T04:05:11-04:00] INFO: adding alternative for rmic
+[2015-09-17T04:05:11-04:00] INFO: adding alternative for rmid
+[2015-09-17T04:05:11-04:00] INFO: adding alternative for rmiregistry
+[2015-09-17T04:05:11-04:00] INFO: adding alternative for schemagen
+[2015-09-17T04:05:11-04:00] INFO: adding alternative for serialver
+[2015-09-17T04:05:11-04:00] INFO: adding alternative for servertool
+[2015-09-17T04:05:11-04:00] INFO: adding alternative for tnameserv
+[2015-09-17T04:05:11-04:00] INFO: adding alternative for unpack200
+[2015-09-17T04:05:12-04:00] INFO: adding alternative for wsgen
+[2015-09-17T04:05:12-04:00] INFO: adding alternative for wsimport
+[2015-09-17T04:05:12-04:00] INFO: adding alternative for xjc
+[2015-09-17T04:05:12-04:00] INFO: ruby_block[update-alternatives] called
+[2015-09-17T04:05:12-04:00] INFO: Processing user[jboss] action create (jboss::default line 19)
+[2015-09-17T04:05:13-04:00] INFO: user[jboss] created
+[2015-09-17T04:05:13-04:00] INFO: Processing directory[/opt/jboss/tmp] action delete (jboss::default line 24)
+[2015-09-17T04:05:13-04:00] INFO: Processing directory[/opt/jboss] action create (jboss::default line 31)
+[2015-09-17T04:05:13-04:00] INFO: directory[/opt/jboss] created directory /opt/jboss
+[2015-09-17T04:05:13-04:00] INFO: directory[/opt/jboss] owner changed to 1001
+[2015-09-17T04:05:13-04:00] INFO: directory[/opt/jboss] group changed to 1002
+[2015-09-17T04:05:13-04:00] INFO: directory[/opt/jboss] mode changed to 755
+[2015-09-17T04:05:13-04:00] INFO: Processing directory[/opt/jboss/tmp] action create (jboss::default line 39)
+[2015-09-17T04:05:13-04:00] INFO: directory[/opt/jboss/tmp] created directory /opt/jboss/tmp
+[2015-09-17T04:05:13-04:00] INFO: directory[/opt/jboss/tmp] owner changed to 1001
+[2015-09-17T04:05:13-04:00] INFO: directory[/opt/jboss/tmp] group changed to 1002
+[2015-09-17T04:05:13-04:00] INFO: directory[/opt/jboss/tmp] mode changed to 755
+[2015-09-17T04:05:13-04:00] INFO: Processing remote_file[/opt/jboss/tmp/jboss.tar.gz] action create (jboss::default line 47)
+[2015-09-17T04:05:13-04:00] INFO: remote_file[/opt/jboss/tmp/jboss.tar.gz] created file /opt/jboss/tmp/jboss.tar.gz
+[2015-09-17T04:06:02-04:00] INFO: remote_file[/opt/jboss/tmp/jboss.tar.gz] updated file contents /opt/jboss/tmp/jboss.tar.gz
+[2015-09-17T04:06:03-04:00] INFO: remote_file[/opt/jboss/tmp/jboss.tar.gz] owner changed to 1001
+[2015-09-17T04:06:03-04:00] INFO: remote_file[/opt/jboss/tmp/jboss.tar.gz] group changed to 1002
+[2015-09-17T04:06:03-04:00] INFO: remote_file[/opt/jboss/tmp/jboss.tar.gz] mode changed to 755
+[2015-09-17T04:06:03-04:00] INFO: Processing execute[extract_jboss] action run (jboss::default line 62)
+[2015-09-17T04:06:09-04:00] INFO: execute[extract_jboss] ran successfully
+[2015-09-17T04:06:10-04:00] INFO: Processing execute[move_jboss] action run (jboss::default line 70)
+[2015-09-17T04:06:10-04:00] INFO: execute[move_jboss] ran successfully
+[2015-09-17T04:06:10-04:00] INFO: Processing cookbook_file[/opt/jboss/standalone/configuration/standalone.xml] action create (jboss::default line 76)
+[2015-09-17T04:06:11-04:00] INFO: cookbook_file[/opt/jboss/standalone/configuration/standalone.xml] backed up to /var/chef/backup/opt/jboss/standalone/configuration/standalone.xml.chef-20150917040611.342457
+[2015-09-17T04:06:11-04:00] INFO: cookbook_file[/opt/jboss/standalone/configuration/standalone.xml] updated file contents /opt/jboss/standalone/configuration/standalone.xml
+[2015-09-17T04:06:11-04:00] INFO: Processing template[/etc/init.d/jboss] action create (jboss::init line 12)
+[2015-09-17T04:06:12-04:00] INFO: template[/etc/init.d/jboss] created file /etc/init.d/jboss
+[2015-09-17T04:06:12-04:00] INFO: template[/etc/init.d/jboss] updated file contents /etc/init.d/jboss
+[2015-09-17T04:06:12-04:00] INFO: template[/etc/init.d/jboss] owner changed to 1001
+[2015-09-17T04:06:12-04:00] INFO: template[/etc/init.d/jboss] group changed to 1002
+[2015-09-17T04:06:12-04:00] INFO: template[/etc/init.d/jboss] mode changed to 754
+[2015-09-17T04:06:12-04:00] INFO: Processing execute[start_jboss] action run (jboss::init line 21)
+[2015-09-17T04:06:12-04:00] INFO: execute[start_jboss] ran successfully
+[2015-09-17T04:06:12-04:00] INFO: Processing remote_file[/opt/jboss/tmp/test.zip] action create (jboss::deploy line 18)
+[2015-09-17T04:06:12-04:00] INFO: remote_file[/opt/jboss/tmp/test.zip] created file /opt/jboss/tmp/test.zip
+[2015-09-17T04:06:14-04:00] INFO: remote_file[/opt/jboss/tmp/test.zip] updated file contents /opt/jboss/tmp/test.zip
+[2015-09-17T04:06:14-04:00] INFO: remote_file[/opt/jboss/tmp/test.zip] owner changed to 1001
+[2015-09-17T04:06:14-04:00] INFO: remote_file[/opt/jboss/tmp/test.zip] group changed to 1002
+[2015-09-17T04:06:14-04:00] INFO: remote_file[/opt/jboss/tmp/test.zip] mode changed to 755
+[2015-09-17T04:06:14-04:00] INFO: Processing execute[extract_jboss] action run (jboss::deploy line 28)
+[2015-09-17T04:06:14-04:00] INFO: execute[extract_jboss] ran successfully
+[2015-09-17T04:06:14-04:00] INFO: Processing execute[restart_jboss] action run (jboss::deploy line 36)
+[2015-09-17T04:06:25-04:00] INFO: execute[restart_jboss] ran successfully
+[2015-09-17T04:06:25-04:00] INFO: Chef Run complete in 299.243426575 seconds
+[2015-09-17T04:06:25-04:00] INFO: Running report handlers
+[2015-09-17T04:06:25-04:00] INFO: Report handlers complete
